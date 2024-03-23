@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DB_STRING = "mongodb+srv://varun:root%4011@cluster0.upxiv1a.mongodb.net/"
+const DB_STRING = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}%4011@cluster0.upxiv1a.mongodb.net/`;
 try {
     mongoose.connect(DB_STRING, {
         useUnifiedTopology: true,

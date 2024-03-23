@@ -1,0 +1,43 @@
+.review-page-container {    
+    .review-header {
+        display: flex;
+        justify-content: space-around;
+        font-size: 80px;
+        font-family:'Segoe UI', sans-serif;
+
+        .movie-rating {
+            color: #6558f5;
+        }
+    }
+
+    .card-container {
+        padding: 2%;
+
+        .review-card {
+            border: 2px solid #e3e8ed;
+            height: 130px;
+            margin-top: 30px;
+            font-family:'Segoe UI', sans-serif;
+
+            .review-comment {
+                margin-left: 20px;
+            }
+
+            .comments-container {
+                display: flex;
+                justify-content: space-between;
+                font-size: 28px;
+                padding: 14px;
+            }
+
+            .comment-rating {
+                color: #6558f5;
+            }
+
+            .reviewer-name {
+                font-style: italic;
+                margin-left: 20px;
+            }
+        }
+    }
+}

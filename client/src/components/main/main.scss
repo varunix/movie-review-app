@@ -1,0 +1,49 @@
+.main {
+    position: relative;
+    margin-top: 8px;
+
+    .title {
+        font-weight: 400;
+        font-size: 32px;
+        font-family: arial,sans-serif;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 50px;
+    }
+
+    .card {
+        .card-body {
+            width: 400px;
+            display: flex;
+            height: 250px;
+            margin-bottom: 20px;
+            background-color: #e0defd;
+            flex-direction: column;
+            padding: 16px;
+
+            .movie-name {
+                font-size: 42px;
+                font-family: sans-serif;
+            }
+
+            .movie-release-date {
+                font-size: 32px;
+                font-style: italic;
+                color: gray;
+                margin-top: 46px;
+                font-family: sans-serif;
+            }
+
+            .movie-rating {
+                font-size: 32px;
+                margin-top: 46px;
+                font-family: sans-serif;
+            }
+        }
+    }
+}
