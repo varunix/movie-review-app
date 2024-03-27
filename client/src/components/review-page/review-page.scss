@@ -1,9 +1,13 @@
-.review-page-container {    
+.review-page-container { 
+    display: flex;
+    flex-direction: column;
+
     .review-header {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         font-size: 80px;
         font-family:'Segoe UI', sans-serif;
+        padding: 0px 56px 0px 44px;
 
         .movie-rating {
             color: #6558f5;
@@ -11,7 +15,7 @@
     }
 
     .card-container {
-        padding: 2%;
+        padding: 12px;
 
         .review-card {
             border: 2px solid #e3e8ed;
@@ -40,4 +44,20 @@
             }
         }
     }
+
+    .no-reviews-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 250px;
+
+        .no-reviews-text {
+            font-size: 20px;
+            justify-self: center;
+            font-family: sans-serif;
+            font-style: italic;
+            color:#e3e8ed;
+        }
+    }
+
 }

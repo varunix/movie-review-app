@@ -35,9 +35,6 @@ router.patch('/:id', getMovie, async (req, res) => {
     if (req.body.releaseDate != null) {
       res.movie.releaseDate = req.body.releaseDate;
     }
-    if (req.body.averageRating != null) {
-      res.movie.averageRating = req.body.averageRating;
-    }
     try {
       const updatedMovie = await res.movie.save();
       res.json(updatedMovie);

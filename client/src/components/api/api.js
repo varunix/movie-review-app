@@ -1,39 +1,40 @@
 import axios from 'axios';
 
 export const getMovies = async () => {
-    return await axios({ 
-        method: 'GET',
-        url: 'http://localhost:5000/api/movies'
-    });
+    try {
+        return await axios({ 
+            method: 'GET',
+            url: 'http://localhost:5000/api/movies'
+        });
+    } catch (error) {
+        console.log('Error: ', error);
+    }
 }
 
 export const getReviews = async (id) => {
-    return await axios({
-        method: 'GET',
-        url: `http://localhost:5000/api/reviews/movie/${id}`
-    });
+    try {
+        return await axios({
+            method: 'GET',
+            url: `http://localhost:5000/api/reviews/movie/${id}`
+        });
+    } catch (error) {
+        console.log('Error: ', error);
+    }
 }
 
-export const updateMovies = async (movie) => {
-    return await axios({
-        method: 'PATCH',
-        url: `http://localhost:5000//api/movies/${movie._id}`,
-        body: {
-            name: movie.name,
-            releaseDate: movie.releaseDate,
-            averageRating: movie.averageRating
-        }
-    });
+export const updateMovies = async (movieName, movieReleaseDate) => {
+    try {
+        const data = {
+            "name": movieName,
+            "releaseDate": movieReleaseDate
+        };
+    
+        return await axios({
+            method: 'POST',
+            url: `http://localhost:5000/api/movies`,
+            data
+        });
+    } catch (error) {
+        console.log('Error: ', error);
+    }
 }
-
-// export const updateReviews = async (id) => {
-//     return await axios({
-//         method: 'PATCH',
-//         url: `http://localhost:5000/api/reviews/${id}`,
-//         body: {
-//             reviewerName: ,
-//             rating:,
-//             reviewComments
-//         }
-//     });
-// }

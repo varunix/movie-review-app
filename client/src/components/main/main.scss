@@ -1,6 +1,7 @@
 .main {
     position: relative;
     margin-top: 8px;
+    padding: 40px;
 
     .title {
         font-weight: 400;
@@ -13,7 +14,6 @@
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
-        padding-left: 50px;
     }
 
     .card {

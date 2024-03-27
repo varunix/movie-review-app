@@ -8,12 +8,15 @@ const MovieModal = ({ open, onClose }) => {
   const [movieName, setMovieName] = useState('');
   const [movieReleaseDate, setMovieReleaseDate] = useState('');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    updateMovies();
+    
+    await updateMovies(movieName, movieReleaseDate).then(res => console.log(res.data));
+    setMovieName('');
+    setMovieReleaseDate('');
   };
 
-  if (!open) return null;
+  if (!open) return false;
 
   return (
     <div className='overlay'>
@@ -34,7 +37,7 @@ const MovieModal = ({ open, onClose }) => {
               />
               <input
                 className='details-input'
-                type='text'
+                type='date'
                 value={movieReleaseDate}
                 onChange={(e) => setMovieReleaseDate(e.target.value)}
                 placeholder='Release date'
