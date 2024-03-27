@@ -11,7 +11,6 @@ const ReviewPage = () => {
     const params = useParams();
     const moviesList = location.state;
     const movie = moviesList.find(x => x._id === params.id);
-    console.log(moviesList);
 
     useEffect(() => {
         getReviews(params.id).then(res => setReviewList(res.data));

@@ -13,7 +13,7 @@ const Main = () => {
 
     const toReviewsPage = (movieId) => {
       navigate(`/review-page/${movieId}`, { state: moviesList});
-    }
+    };
 
     const renderedList = moviesList.map(movie => (
       <div key={movie._id} className='card' onClick={() => toReviewsPage(movie._id)}>
