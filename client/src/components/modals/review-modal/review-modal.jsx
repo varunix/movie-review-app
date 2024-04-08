@@ -13,7 +13,6 @@ const ReviewModal = ({ open, onClose }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData.selectedMovieId, formData.reviewerName, formData.reviewerRating, formData.reviewerComment);
     await addReviews(formData.selectedMovieId, formData.reviewerName, formData.reviewerRating, formData.reviewerComment).then(res => alert("Review added successfully!"));
     onClose(true);
     setFormData({selectedMovieId: '65ff514d6bcacf2690de4d73', reviewerName: '', reviewerRating: 0, reviewerComment: ''});
