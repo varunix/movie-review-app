@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './main.scss';
 import { getMovies } from '../api/api';
+import { movieStoreContext } from '../../context/movies';
 
 const Main = () => {
-    const [moviesList, setMoviesList] = useState([]);
+    const movieListState = useContext(movieStoreContext);
     const navigate = useNavigate();
     
     useEffect(() => {
-      getMovies().then(res => setMoviesList(res.data));
+      getMovies().then(res => movieListState.setMovieList(res.data));
     }, []);
 
     const toReviewsPage = (movieId) => {
-      navigate(`/review-page/${movieId}`, { state: moviesList});
+      navigate(`/review-page/${movieId}`, { state: movieListState.movieList});
     };
 
-    const renderedList = moviesList.map(movie => (
+    const renderedList = movieListState.movieList.map(movie => (
       <div key={movie._id} className='card' onClick={() => toReviewsPage(movie._id)}>
         <div className='card-body'>
           <div className='movie-name'>{movie.name}</div>

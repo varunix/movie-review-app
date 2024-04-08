@@ -17,15 +17,15 @@ const ReviewPage = () => {
   }, []);
 
   const renderedList = reviewList.map((review) => (
-    <div className="card-container">
-        <div key={review._id} className="review-card">
+    <div key={review._id} className="card-container">
+        <div className="review-card">
         <div className="comments-container">
             <div className="review-comment">{review.reviewComments}</div>
-            <div class="comment-rating">{review.rating + "/10"}</div>
+            <div className="comment-rating">{review.rating + "/10"}</div>
         </div>
         <div className="comments-container">
             <div className="reviewer-name">{"By " + review.reviewerName}</div>
-            <div class="icons-container">
+            <div className="icons-container">
             <FontAwesomeIcon
                 icon={faPenToSquare}
                 style={{ color: "#e3e8ed", marginRight: "20px" }}

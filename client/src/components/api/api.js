@@ -38,3 +38,22 @@ export const updateMovies = async (movieName, movieReleaseDate) => {
         console.log('Error: ', error);
     }
 }
+
+export const addReviews = async (movieId, reviewerName, rating, reviewComments) => {
+    try {
+        const data = {
+            movieId: movieId,
+            reviewerName: reviewerName,
+            rating: rating,
+            reviewComments: reviewComments
+        };
+
+        return await axios({
+            method: 'POST',
+            url: `http://localhost:5000/api/reviews`,
+            data
+        });
+    } catch (error) {
+        console.log('Error: ', error);
+    }
+}

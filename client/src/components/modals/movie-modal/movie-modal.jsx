@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { updateMovies } from '../api/api';
+import { updateMovies } from '../../api/api';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import './movie-modal.scss';
@@ -41,6 +41,7 @@ const MovieModal = ({ open, onClose }) => {
                 value={movieReleaseDate}
                 onChange={(e) => setMovieReleaseDate(e.target.value)}
                 placeholder='Release date'
+                style={{ color: '#e3e8ed' }}
               />
               <button type='submit' className='submit-button'>Create movie</button>
           </form>
