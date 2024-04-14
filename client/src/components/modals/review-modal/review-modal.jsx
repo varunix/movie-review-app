@@ -7,13 +7,13 @@ import { addReviews } from "../../api/api";
 
 const ReviewModal = ({ open, onClose }) => {
   const movieListState = useContext(movieStoreContext);
-  const [formData, setFormData] = useState({selectedMovieId: '65ff514d6bcacf2690de4d73', reviewerName: '', reviewerRating: 0, reviewerComment: ''})
+  const [formData, setFormData] = useState({selectedMovieId: '65ff514d6bcacf2690de4d73', reviewerName: '', reviewerRating: undefined, reviewerComment: ''})
 
   if(!open) return false;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await addReviews(formData.selectedMovieId, formData.reviewerName, formData.reviewerRating, formData.reviewerComment).then(res => alert("Review added successfully!"));
+    await addReviews(formData.selectedMovieId, formData.reviewerName, formData.reviewerRating, formData.reviewerComment).then(alert("Review added successfully!"));
     onClose(true);
     setFormData({selectedMovieId: '65ff514d6bcacf2690de4d73', reviewerName: '', reviewerRating: 0, reviewerComment: ''});
   }
@@ -39,9 +39,9 @@ const ReviewModal = ({ open, onClose }) => {
                 <option key={movie._id} value={movie._id}>{movie.name}</option>    
                 ))}
               </select> 
-              <input className='details-input' type="text" name={'reviewerName'} defaultValue={formData.reviewerName} onChange={handleChange} placeholder={"Your Name"} />
-              <input className='details-input' type="number" name={'reviewerRating'} defaultValue={formData.reviewerRating} onChange={handleChange} placeholder={"Rating out of 10"} />
-              <textarea className='details-input' type="text" name={'reviewerComment'} defaultValue={formData.reviewerComment} onChange={handleChange} placeholder={"Review comments"}/>
+              <input className='details-input' type="text" name={'reviewerName'} required defaultValue={formData.reviewerName} onChange={handleChange} placeholder={"Your Name"} />
+              <input className='details-input' type="number" name={'reviewerRating'} required defaultValue={formData.reviewerRating} onChange={handleChange} placeholder={"Rate movie out of 10"} />
+              <textarea className='details-input' type="text" name={'reviewerComment'} required defaultValue={formData.reviewerComment} onChange={handleChange} placeholder={"Review comments"}/>
               <button type="submit" className="submit-button">
                 Add review
               </button>

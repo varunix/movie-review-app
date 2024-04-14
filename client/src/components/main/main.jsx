@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './main.scss';
 import { getMovies } from '../api/api';
@@ -21,7 +21,7 @@ const Main = () => {
         <div className='card-body'>
           <div className='movie-name'>{movie.name}</div>
           <div className='movie-release-date'>{'Released: ' + movie.releaseDate.substring(0,10)}</div>
-          <div className='movie-rating'><b>{'Rating: ' + movie.averageRating + '/10'}</b></div>
+          <div className='movie-rating'><b>Rating: {movie.averageRating != undefined ? movie.averageRating + '/10' : 'Not yet reviewed'}</b></div>
         </div>
       </div>
     ));

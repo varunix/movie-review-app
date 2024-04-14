@@ -9,7 +9,7 @@ export const getMovies = async () => {
     } catch (error) {
         console.log('Error: ', error);
     }
-}
+};
 
 export const getReviews = async (id) => {
     try {
@@ -20,7 +20,7 @@ export const getReviews = async (id) => {
     } catch (error) {
         console.log('Error: ', error);
     }
-}
+};
 
 export const updateMovies = async (movieName, movieReleaseDate) => {
     try {
@@ -37,7 +37,7 @@ export const updateMovies = async (movieName, movieReleaseDate) => {
     } catch (error) {
         console.log('Error: ', error);
     }
-}
+};
 
 export const addReviews = async (movieId, reviewerName, rating, reviewComments) => {
     try {
@@ -56,4 +56,16 @@ export const addReviews = async (movieId, reviewerName, rating, reviewComments) 
     } catch (error) {
         console.log('Error: ', error);
     }
-}
+};
+
+export const updatedMovieRating = async (id, rating) => {
+    try {
+        return await axios({
+            method: 'PATCH',
+            url: `http://localhost:5000/api/movies/${id}`,
+            rating
+        });
+    } catch (error) {
+        console.log('Error: ', error);
+    }
+};
