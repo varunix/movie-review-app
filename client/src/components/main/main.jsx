@@ -10,7 +10,7 @@ const Main = () => {
     
     useEffect(() => {
       getMovies().then(res => movieListState.setMovieList(res.data));
-    }, []);
+    }, [movieListState.movieList]);
 
     const toReviewsPage = (movieId) => {
       navigate(`/review-page/${movieId}`, { state: movieListState.movieList});
@@ -21,7 +21,7 @@ const Main = () => {
         <div className='card-body'>
           <div className='movie-name'>{movie.name}</div>
           <div className='movie-release-date'>{'Released: ' + movie.releaseDate.substring(0,10)}</div>
-          <div className='movie-rating'><b>Rating: {movie.averageRating != undefined ? movie.averageRating + '/10' : 'Not yet reviewed'}</b></div>
+          <div className='movie-rating'><b>Rating: {movie.rating != undefined ? movie.rating + '/10' : 'Not yet reviewed'}</b></div>
         </div>
       </div>
     ));

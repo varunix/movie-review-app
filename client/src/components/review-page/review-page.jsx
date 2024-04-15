@@ -6,8 +6,11 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import fetchTotalRating from "../../utilities/rating";
 import { updatedMovieRating } from "../api/api";
 import "./review-page.scss";
+import { movieStoreContext } from '../../context/movies';
+import { getMovies } from '../api/api';
 
 const ReviewPage = () => {
+  const movieListState = useContext(movieStoreContext);
   const [reviewList, setReviewList] = useState([]);
   const location = useLocation();
   const params = useParams();
@@ -19,11 +22,9 @@ const ReviewPage = () => {
       setReviewList(res.data);
       const ratings = res.data.map((review) => review.rating);
       const calculatedTotalRating = fetchTotalRating(ratings);
-      updatedMovieRating(params.id, calculatedTotalRating);
+      updatedMovieRating(params.id, movie.name, movie.releaseDate, calculatedTotalRating).then((res) => console.log(res.data));
     });
   }, []);
-
-  console.log(movie);
 
   const renderedList = reviewList.map((review) => (
     <div key={review._id} className="card-container">
@@ -51,7 +52,7 @@ const ReviewPage = () => {
       <div className="review-header">
         <span className="movie-name">{movie.name}</span>
         <span className="movie-rating">
-          {movie.averageRating + "/10"}
+          {movie.rating ? movie.rating + "/10" : "No reviews"}
         </span>
       </div>
       {renderedList.length ? (

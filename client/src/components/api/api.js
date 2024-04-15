@@ -22,11 +22,12 @@ export const getReviews = async (id) => {
     }
 };
 
-export const updateMovies = async (movieName, movieReleaseDate) => {
+export const updateMovies = async (movieName, movieReleaseDate, movieRating) => {
     try {
         const data = {
             "name": movieName,
-            "releaseDate": movieReleaseDate
+            "releaseDate": movieReleaseDate,
+            "rating": movieRating
         };
     
         return await axios({
@@ -58,12 +59,18 @@ export const addReviews = async (movieId, reviewerName, rating, reviewComments) 
     }
 };
 
-export const updatedMovieRating = async (id, rating) => {
+export const updatedMovieRating = async (id, movieName, movieReleaseDate, movieRating) => {
+    const data = {
+        name: movieName,
+        releaseDate: movieReleaseDate,
+        rating: movieRating
+    };
+
     try {
         return await axios({
-            method: 'PATCH',
+            method: 'POST',
             url: `http://localhost:5000/api/movies/${id}`,
-            rating
+            data
         });
     } catch (error) {
         console.log('Error: ', error);

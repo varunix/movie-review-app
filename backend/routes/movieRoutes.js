@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 });
 
 // Update a movie rating
-router.patch("/:id", getMovie, async (req, res) => {
+router.post("/:id", getMovie, async (req, res) => {
   if (req.body.rating != null) {
     res.movie.rating = req.body.rating;
   }

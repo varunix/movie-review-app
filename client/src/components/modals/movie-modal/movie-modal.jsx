@@ -7,13 +7,15 @@ import './movie-modal.scss';
 const MovieModal = ({ open, onClose }) => {
   const [movieName, setMovieName] = useState('');
   const [movieReleaseDate, setMovieReleaseDate] = useState('');
+  const [movieRating, setMovieRating] = useState(0);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     
-    await updateMovies(movieName, movieReleaseDate).then(res => console.log(res.data));
+    await updateMovies(movieName, movieReleaseDate, movieRating).then(res => console.log(res.data));
     setMovieName('');
     setMovieReleaseDate('');
+    setMovieRating(0);
   };
 
   if (!open) return false;
