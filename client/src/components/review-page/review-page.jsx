@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getReviews } from "../api/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,11 +6,9 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import fetchTotalRating from "../../utilities/rating";
 import { updatedMovieRating } from "../api/api";
 import "./review-page.scss";
-import { movieStoreContext } from '../../context/movies';
-import { getMovies } from '../api/api';
+import { deleteReview } from "../api/api";
 
 const ReviewPage = () => {
-  const movieListState = useContext(movieStoreContext);
   const [reviewList, setReviewList] = useState([]);
   const location = useLocation();
   const params = useParams();
@@ -22,9 +20,19 @@ const ReviewPage = () => {
       setReviewList(res.data);
       const ratings = res.data.map((review) => review.rating);
       const calculatedTotalRating = fetchTotalRating(ratings);
-      updatedMovieRating(params.id, movie.name, movie.releaseDate, calculatedTotalRating).then((res) => console.log(res.data));
+      updatedMovieRating(
+        params.id,
+        movie.name,
+        movie.releaseDate,
+        calculatedTotalRating
+      ).then((res) => console.log(res.data));
     });
-  }, []);
+  }, [params.id]);
+
+  const handleDeleteReview = (reviewId) => {
+    deleteReview(reviewId).then((res) => alert(res.data));
+    window.location.reload();
+  };
 
   const renderedList = reviewList.map((review) => (
     <div key={review._id} className="card-container">
@@ -40,7 +48,7 @@ const ReviewPage = () => {
               icon={faPenToSquare}
               style={{ color: "#e3e8ed", marginRight: "20px" }}
             />
-            <FontAwesomeIcon icon={faTrash} style={{ color: "#e3e8ed" }} />
+            <FontAwesomeIcon icon={faTrash} style={{ color: "#e3e8ed", cursor: 'pointer' }} onClick={() => handleDeleteReview(review._id)} />
           </div>
         </div>
       </div>

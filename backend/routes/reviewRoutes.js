@@ -60,8 +60,9 @@ router.patch('/:id', getReview, async (req, res) => {
 // Delete a review
 router.delete('/:id', getReview, async (req, res) => {
     try {
-      await res.review.remove();
-      res.json({ message: 'Review deleted' });
+      await Review.findByIdAndDelete({ _id: req.params.id });
+      const reviews = Review.find({})
+      res.json('Review deleted successfully');
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

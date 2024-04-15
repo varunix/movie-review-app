@@ -76,3 +76,14 @@ export const updatedMovieRating = async (id, movieName, movieReleaseDate, movieR
         console.log('Error: ', error);
     }
 };
+
+export const deleteReview = async (id) => {
+    try {
+        return await axios({
+            method: 'DELETE',
+            url: `http://localhost:5000/api/reviews/${id}`
+        });
+    } catch (error) {
+        console.log('Error', error);
+    }
+}

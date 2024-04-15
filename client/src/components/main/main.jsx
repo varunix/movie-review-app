@@ -27,7 +27,7 @@ const Main = () => {
         <div className='card-body'>
           <div className='movie-name'>{movie.name}</div>
           <div className='movie-release-date'>{'Released: ' + formatDate(movie.releaseDate)}</div>
-          <div className='movie-rating'><b>Rating: {movie.rating != undefined ? movie.rating + '/10' : 'Not yet reviewed'}</b></div>
+          <div className='movie-rating'><b>Rating: {movie.rating !== undefined ? movie.rating + '/10' : 'Not yet reviewed'}</b></div>
         </div>
       </div>
     ));
