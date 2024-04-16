@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import './header.scss';
+import { getMovies } from '../api/api';
+import { movieStoreContext } from '../../context/movies';
 
 const Header = ({ setOpenMovieModal, setOpenReviewModal }) => {
+  const movieListState = useContext(movieStoreContext);
+  useEffect(() => {
+    getMovies().then(res => movieListState.setMovieList(res.data));
+  }, [movieListState.movieList]);
 
   return (
       <div className="header">

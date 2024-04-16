@@ -1,16 +1,11 @@
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './main.scss';
-import { getMovies } from '../api/api';
 import { movieStoreContext } from '../../context/movies';
 
 const Main = () => {
     const movieListState = useContext(movieStoreContext);
     const navigate = useNavigate();
-    
-    useEffect(() => {
-      getMovies().then(res => movieListState.setMovieList(res.data));
-    }, [movieListState.movieList]);
 
     const toReviewsPage = (movieId) => {
       navigate(`/review-page/${movieId}`, { state: movieListState.movieList});
