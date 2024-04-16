@@ -86,4 +86,21 @@ export const deleteReview = async (id) => {
     } catch (error) {
         console.log('Error', error);
     }
+};
+
+export const updateReview = async (id, name, rating, comments) => {
+    const data = {
+        reviewerName: name,
+        rating: rating,
+        reviewComments: comments
+    };
+    try {
+        return await axios({
+            method: 'PATCH',
+            url: `http://localhost:5000/api/reviews/${id}`,
+            data
+        });
+    } catch (error) {
+        console.log('Error', error);
+    }
 }

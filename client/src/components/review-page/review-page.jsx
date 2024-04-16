@@ -8,7 +8,7 @@ import { updatedMovieRating } from "../api/api";
 import "./review-page.scss";
 import { deleteReview } from "../api/api";
 
-const ReviewPage = () => {
+const ReviewPage = ({ setReviewUpdateModal, setReviewData }) => {
   const [reviewList, setReviewList] = useState([]);
   const location = useLocation();
   const params = useParams();
@@ -34,6 +34,11 @@ const ReviewPage = () => {
     window.location.reload();
   };
 
+  const handleUpdateReview = (reviewId) => {
+    setReviewData(reviewId);
+    setReviewUpdateModal(true);
+  }
+
   const renderedList = reviewList.map((review) => (
     <div key={review._id} className="card-container">
       <div className="review-card">
@@ -46,7 +51,8 @@ const ReviewPage = () => {
           <div className="icons-container">
             <FontAwesomeIcon
               icon={faPenToSquare}
-              style={{ color: "#e3e8ed", marginRight: "20px" }}
+              style={{ color: "#e3e8ed", marginRight: "20px", cursor: 'pointer' }}
+              onClick={() => handleUpdateReview(review._id)}
             />
             <FontAwesomeIcon icon={faTrash} style={{ color: "#e3e8ed", cursor: 'pointer' }} onClick={() => handleDeleteReview(review._id)} />
           </div>
