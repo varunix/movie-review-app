@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { updateReview } from "../../api/api";
-import "./edit-review-modal.scss";
+import "./../review-modal/review-modal.scss";
 
 const UpdateReviewModal = ({ open, onClose, reviewData }) => {
   const [formData, setFormData] = useState({ reviewerName: '', rating: undefined, reviewerComment: '' })
