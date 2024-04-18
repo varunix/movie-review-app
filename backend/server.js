@@ -12,11 +12,15 @@ const PORT = process.env.PORT || 5000;
 const corsOptions = {
   credentials: true,
   origin: 'https://movie-review-app-kappa.vercel.app',
+  methods: ["POST", "GET", "DELETE", "PATCH", "PUT"]
 };
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.json("Backend is online");
+});
 app.use('/api/movies', movieRoutes);
 app.use('/api/reviews', reviewRoutes);
 
