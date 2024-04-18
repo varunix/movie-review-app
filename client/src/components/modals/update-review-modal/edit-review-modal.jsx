@@ -15,13 +15,13 @@ const UpdateReviewModal = ({ open, onClose, reviewData }) => {
     onClose(true);
     setFormData({ reviewerName: '', reviewerRating: undefined, reviewerComment: '' });
     window.location.reload();
-  }
+  };
 
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value}));
-  }
+  };
 
   return (
     <div className="overlay">
