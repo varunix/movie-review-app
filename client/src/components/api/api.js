@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const backendURL = 'https://movie-review-app-backend-2rmmgi4pp-varunixs-projects.vercel.app/';
+const backendURL = 'https://movie-review-app-backend-2rmmgi4pp-varunixs-projects.vercel.app';
 
 export const getMovies = async () => {
     try {
         return await axios({ 
             method: 'GET',
-            url: `http://${backendURL}/api/movies`
+            url: `${backendURL}/api/movies`
         });
     } catch (error) {
         console.log('Error: ', error);
@@ -17,7 +17,7 @@ export const getReviews = async (id) => {
     try {
         return await axios({
             method: 'GET',
-            url: `http://${backendURL}/api/reviews/movie/${id}`
+            url: `${backendURL}/api/reviews/movie/${id}`
         });
     } catch (error) {
         console.log('Error: ', error);
@@ -34,7 +34,7 @@ export const updateMovies = async (movieName, movieReleaseDate, movieRating) => 
     
         return await axios({
             method: 'POST',
-            url: `http://${backendURL}/api/movies`,
+            url: `${backendURL}/api/movies`,
             data
         });
     } catch (error) {
@@ -53,7 +53,7 @@ export const addReviews = async (movieId, reviewerName, rating, reviewComments) 
 
         return await axios({
             method: 'POST',
-            url: `http://${backendURL}/api/reviews`,
+            url: `${backendURL}/api/reviews`,
             data
         });
     } catch (error) {
@@ -71,7 +71,7 @@ export const updatedMovieRating = async (id, movieName, movieReleaseDate, movieR
     try {
         return await axios({
             method: 'POST',
-            url: `http://${backendURL}/api/movies/${id}`,
+            url: `${backendURL}/api/movies/${id}`,
             data
         });
     } catch (error) {
@@ -83,7 +83,7 @@ export const deleteReview = async (id) => {
     try {
         return await axios({
             method: 'DELETE',
-            url: `http://${backendURL}/api/reviews/${id}`
+            url: `${backendURL}/api/reviews/${id}`
         });
     } catch (error) {
         console.log('Error', error);
@@ -99,7 +99,7 @@ export const updateReview = async (id, name, rating, comments) => {
     try {
         return await axios({
             method: 'PATCH',
-            url: `http://${backendURL}/api/reviews/${id}`,
+            url: `${backendURL}/api/reviews/${id}`,
             data
         });
     } catch (error) {
