@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const backendURL = 'https://movie-review-app-backend-omega.vercel.app/';
+const backendURL = 'https://movie-review-app-backend-2rmmgi4pp-varunixs-projects.vercel.app/';
 
 export const getMovies = async () => {
     try {
